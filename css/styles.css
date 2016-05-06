@@ -6124,6 +6124,7 @@ a.setting-label {
   font-weight: bold;
   font-size: .9em;
   margin-top: 21px;
+  margin-bottom: 50px;
   text-align: center;
   padding: 5px 0 5px 0; }
 
@@ -6218,7 +6219,7 @@ a.setting-label {
 .row-matches h5 {
   position: relative;
   margin-top: 26px;
-  margin-bottom: 25px;
+  margin-bottom: 20px;
   font-size: .8em; }
   .row-matches h5 em {
     color: #f0ad4e;

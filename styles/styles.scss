@@ -102,7 +102,7 @@
     font-weight:bold;
     font-size: .9em;
     margin-top:21px;
-    //margin-left:5px;
+    margin-bottom:50px; // bump off the bottom for longer results
     text-align: center;
     padding:5px 0 5px 0;
 }
@@ -233,7 +233,7 @@
 .row-matches h5 {
     position:relative;
     margin-top:26px;
-    margin-bottom:25px;
+    margin-bottom:20px;
     font-size:.8em;
 
     em {
