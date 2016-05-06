@@ -96,20 +96,24 @@
     }
 }
 
-.redo-search{
-    width:25%;
-    color: #444;
-    font-weight:bold;
-    font-size: .75em;
-    margin-top:21px;
-    text-align: center;
-    padding:5px 0 5px 0;
+.aux-cmd {
+    font-size:.8em;
+
+    button {
+        padding-right:5px;
+        padding-left:5px;
+    }
 }
 
-.row-player .redo-search {
-    margin-left:5px;
-    width: 35%;
-    font-size:.9em;
+.redo-search{
+    width:35%;
+    color: #444;
+    font-weight:bold;
+    font-size: .9em;
+    margin-top:21px;
+    //margin-left:5px;
+    text-align: center;
+    padding:5px 0 5px 0;
 }
 
 #fakeSearch {
@@ -128,7 +132,7 @@
     background-color: $brand-warning;// #161616;
     margin-top:30px;
     position:relative;
-    font-size:1.2em;
+    font-size:1.5em;
     font-weight:bold;
 
     #analyser {
@@ -214,13 +218,13 @@
 .row-matches h5 {
     position:relative;
     margin-top:21px;
-    margin-bottom:25px;
+    margin-bottom:15px;
     font-size:.8em;
 
     em {
         color: $brand-warning;
-        margin-left:5px;
-        margin-right:5px;
+        margin-left:3px;
+        margin-right:3px;
     }
 }
 

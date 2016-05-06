@@ -20,7 +20,7 @@ var userSettings = {
         // console.log('set to ', bool);
         _storageWrapper.set('playLast30', bool);
     },
-    lastViewed_get: function(){
+    lastViewed_get: function(){ //last viewed video
         return _storageWrapper.get('lastViewed') || '';
     },
     lastViewed_set: function(video){
@@ -125,6 +125,7 @@ $(function() {
             }
         }
 
+        $('.inputs').html('');
         currentStep = 'matches';
         displayCurrentStep();
     }
@@ -150,6 +151,17 @@ $(function() {
     /////////////////////////////////////////////////////////////
     //  Event handlers
     /////////////////////////////////////////////////////////////
+    $('.load-last-search').on('click', function(e){
+        console.log('last search', e);
+        var last = userSettings.lastLyricSearch_get() || '';
+        if(last.trim().length === 0){
+            displayMessageGrowl('You do not have any saved searches.', 'warning');
+        }
+
+        $('.inputs').html('');
+        $('#final_span').html(last.trim());
+    });
+
     $('.redo-search').on('click', function() {
         $('.inputs').html('');
         currentStep = 'home';
