@@ -14,20 +14,20 @@ var gLyricsPageSize = 30;
 var userSettings = {
 
     playLast30_get: function(){
-        return _storageWrapper.get('playLast30') || true
+        return _storageWrapper.get('playLast30') || true;
     },
     playLast30_set: function(bool){
         // console.log('set to ', bool);
         _storageWrapper.set('playLast30', bool);
     },
     lastViewed_get: function(){
-        return _storageWrapper.get('lastViewed') || ''
+        return _storageWrapper.get('lastViewed') || '';
     },
     lastViewed_set: function(video){
         _storageWrapper.set('lastViewed', video);
     },
     lastLyricSearch_get: function(){
-        return _storageWrapper.get('lastLyricSearch') || ''
+        return _storageWrapper.get('lastLyricSearch') || '';
     },
     lastLyricSearch_set: function(lyrics){
         _storageWrapper.set('lastLyricSearch', lyrics);
@@ -139,7 +139,7 @@ $(function() {
                     page_size: gLyricsPageSize,
                     format:"jsonp",
                     },
-                    url: "http://api.musixmatch.com/ws/1.1/track.search",
+                    url: "//api.musixmatch.com/ws/1.1/track.search",
                     dataType: "jsonp",
                     contentType: 'application/json',
                     success: processLyricApiCall,

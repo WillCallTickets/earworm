@@ -1,6 +1,6 @@
 {
   "firebase": "glaring-inferno-6693",
-  "public": "public",
+  "public": "/",
   "ignore": [
     "firebase.json",
     "**/.*",
