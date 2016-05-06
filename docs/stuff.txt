@@ -1,0 +1,22 @@
+
+LYRICS N MUSIC
+To search for lyrics by words in lyrics:
+http://api.lyricsnmusic.com/songs?api_key=[YOUR_API_KEY]&lyrics=Imagine%20all%20the%20people
+
+
+
+Musixmatch
+239cca557f05fed767290b6d5d931ad6
+http://api.musixmatch.com/ws/1.1/
+
+q_lyrics=
+f_has_lyrics = 1
+
+
+Looks for lyrics with interesting words inside.
+
+Request
+
+Is there a song mentioning the words “music”,“hack” and “day”?
+
+track.search?q_lyrics=music%20hack%20day

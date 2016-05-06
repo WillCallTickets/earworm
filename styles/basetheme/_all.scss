@@ -1,0 +1,21 @@
+// define the vars for the the theme - from bootswatch/superhero */
+@import 'variables_superhero';
+// import the bootstrap.scss */
+@import '../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap';
+// import our swatch theme */
+@import 'superhero';
+
+// this import order allows us to overwrite variables in the superhero theme */
+
+/*
+STEPS:
+
+npm install bootstrap-sass
+
+link swatch_variables.scss font file to bootstrap-sass install
+
+variables first - define color
+then bootstrap-sass
+then swatch.scss - relies on bootstrap mixins
+
+*/

@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+    <title>Earworm</title>
+
+    <link rel="stylesheet" href="lib/jquery.growl/stylesheets/jquery.growl.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <div class="container container-nav">
+        <div class="btn-group btn-group-justified" role="group">
+            <div class="btn-group" role="group">
+                <button type="button" class="btn btn-primary active">Home</button>
+            </div>
+            <div class="btn-group" role="group">
+                <button type="button" class="btn btn-primary">Settings</button>
+            </div>
+            <div class="btn-group" role="group">
+                <button type="button" class="btn btn-primary">FAQ</button>
+            </div>
+            <div class="btn-group" role="group">
+                <button type="button" class="btn btn-primary">Contact</button>
+            </div>
+        </div>
+    </div>
+    <div id="container" class="container">
+        <div class="row row-home">
+            <div class="col col-xs-12">
+                <div class="command-ctr btn-group btn-group-justified" role="group">
+                    <div class="btn-group" role="group">
+                        <button class="btn btn-warning" id="record_button" onclick="toggleStartStop()">Record Lyrics</button>
+                    </div>
+                    <div class="btn-group" role="group">
+                        <button class="btn btn-warning reset-input">Reset</button>
+                    </div>
+                    <div class="btn-group" role="group">
+                        <button class="btn btn-warning find-song" id="evaluateLyrics" onclick="toggleStop()">Find Matches</button>
+                    </div>
+                </div>
+                <div id="speechContainer">
+                    <canvas id="analyser"></canvas>
+                    <span class="inputs final" id="final_span"></span>
+                    <span class="inputs interim" id="interim_span"></span>
+                </div>
+                <div>
+                    <input type="text" placeholder="enter search here" value="smells like teen spirit" id="fakeSearch" class="form-control" />
+                </div>
+            </div>
+        </div>
+        <!--  end row input -->
+        <div class="row row-matches">
+            <div class="col col-xs-12">
+                <button class="redo-search btn btn-warning"><span class="glyphicon glyphicon-arrow-left"></span> New Lyric Search</button>
+                <h5></h5>
+                <ul id="lyricMatchList" class="list-unstyled"></ul>
+            </div>
+        </div>
+        <!--  end row matches -->
+        <div class="row row-player">
+            <div class="col col-xs-12">
+                <button class="redo-search btn btn-warning"><span class="glyphicon glyphicon-arrow-left"></span> New Lyric Search</button>
+                <div id="video_player">
+                    <div id="yt_player_skin" class="embed-responsive embed-responsive-4by3">
+                        <div id="yt_player"></div>
+                    </div>
+                    <div id="yt_playlist"></div>
+                </div>
+                <div class="clearfix"></div>
+                <div class="playback-setting-wrapper">
+                    <ul class="list-unstyled info-listing">
+                        <li>
+                            <input id="playLast30_player" class="setting-toggle play-last-setting" type="checkbox" data-onstyle="warning" data-toggle="toggle">
+                            <label class="setting-label" for="playLast30_player">Start playback 30 seconds from end</label>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!--  end row player -->
+        <div class="row row-settings">
+            <div class="col col-xs-12">
+                <div id="settings">
+                    <h1>Settings</h1>
+                    <ul class="list-unstyled info-listing">
+                        <li>
+                            <input id="playLast30" class="setting-toggle play-last-setting" type="checkbox" data-onstyle="warning" data-toggle="toggle">
+                            <label class="setting-label" for="playLast30">Start playback 30 seconds from end</label>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!--  end row settings -->
+        <div class="row row-faq">
+            <div class="col col-xs-12">
+                <div id="faq">
+                    <h1>FAQ</h1>
+                    <ul class="list-unstyled info-listing">
+                        <li>
+                            Instructions for use
+                            <ul class="list-unstyled">
+                                <li>From the home page, click on the "Record Lyrics" button and begin speaking or singing the song stuck in your head.</li>
+                                <li>When you have spoken the lyrics, click on the "Stop Recording" button.</li>
+                                <li>Click the "Find Matches" button to see alist of possible matches.</li>
+                                <li>Click on one of the listed matches or redo your search.</li>
+                                <li>Listen to a you tube video of the song you selected.</li>
+                                <li>You may change the setting for listening to only the last 30 seconds of a song to listening to the entire song from the video player page or from the settings page.</li>
+                                <li>Enjoy!</li>
+                            </ul>
+                        </li>
+                        <li>
+                            The theory behind the app
+                            <ul class="list-unstyled">
+                                <li>It has been noted that listening to the ending of the song stuck in your head will help your brain to <em>resolve</em> the song, thereby relieving you of the earworm.</li>
+                            </ul>
+                        </li>
+                        <li>
+                            Does this actually work?
+                            <ul class="list-unstyled">
+                                <li>Only time will tell!</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!--  end row faq -->
+        <div class="row row-contact">
+            <div class="col col-xs-12">
+                <div id="contact">
+                    <h1>Contact</h1>
+                    <ul class="list-unstyled info-listing">
+                        <li>
+                            <a href="mailto:rob@robkurtz.net?subject=Earworm" class="setting-label">Send me an email!</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!--  end row contact -->
+    </div>
+
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+    <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.13.0/moment.min.js"></script>
+    <script src="lib/jquery.growl/javascripts/jquery.growl.js"></script>
+    <script src="utils.js"></script>
+
+    <script src="lib/AudioRecorder/js/audiodisplay.js"></script>
+    <script src="lib/AudioRecorder/js/recorderjs/recorder.js"></script>
+    <script src="lib/AudioRecorder/js/main.js"></script>
+    <script src="speechApiDetails.js"></script>
+
+    <script src="youTubeSearch.js"></script>
+    <script src="https://www.youtube.com/iframe_api"></script>
+    <script src="https://apis.google.com/js/client.js?onload=onClientLoad" type="text/javascript"></script>
+
+    <script src="app.js"></script>
+
+</body>
+
+</html>

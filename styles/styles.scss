@@ -1,0 +1,291 @@
+@import 'basetheme/all';
+
+// Overwrite growl colors
+.growl {
+  opacity: 0.9;
+  filter: alpha(opacity=90);
+}
+.growl.growl-default {
+  color: #FFF;
+  background: $brand-info;// #7f8c8d;
+}
+.growl.growl-error {
+  color: #FFF;
+  background: $brand-danger;//#C0392B;
+}
+.growl.growl-notice {
+  color: #FFF;
+  background: $brand-success;// #2ECC71;
+}
+.growl.growl-warning {
+  color: #FFF;
+  background: $brand-warning;// #F39C12;
+}
+
+.playback-setting-wrapper {
+    margin-top:30px;
+    padding-left:5px;
+}
+.playback-setting-wrapper .setting-label,
+#settings .setting-label {
+    margin-left:15px;
+}
+
+ ul.info-listing, ul.info-listing a, .setting-label {
+    font-size:1.2em;
+    font-weight:bold;
+    color:$brand-warning;
+ }
+ a.setting-label {
+     text-decoration: underline;
+ }
+
+.slow .toggle-group { transition: left 0.7s; -webkit-transition: left 0.7s; }
+.fast .toggle-group { transition: left 0.1s; -webkit-transition: left 0.1s; }
+.quick .toggle-group { transition: none; -webkit-transition: none; }
+
+.container.container-nav {
+    padding:30px 15px 0px 15px;
+    .btn {
+        font-size:.8em;
+        font-weight:normal;
+    }
+}
+.container {
+    //border:solid #999 1px;
+    min-width:480px;
+    max-width:480px;
+    padding:15px;
+}
+
+.row {
+    display:none;
+    h1 {
+        margin-bottom:1em;
+        color:$brand-warning;
+    }
+}
+
+.toggle-group .btn {
+    line-height:1em;
+}
+.toggle-on {
+    color:#444;
+    font-weight:bold;
+}
+
+.command-ctr {
+    margin-top:25px;/*match header margin-top*/
+    margin-bottom: 10px;
+
+    button {
+        color: #444;
+        font-weight:bold;
+        font-size: 1.3em;
+        text-align: center;
+        padding-left:0;
+        padding-right:0;
+    }
+
+    div.btn-group:nth-child(2) {
+        padding:0 10px;
+    }
+}
+
+.redo-search{
+    color: #444;
+    font-weight:bold;
+    font-size: 1.3em;
+    margin-top:21px;
+}
+
+#fakeSearch {
+    display:none;
+}
+
+#video_player {
+    display:none;
+}
+
+#speechContainer {
+    display: block;
+    width:100%;
+    height:250px;
+    padding:10px;
+    background-color: $brand-warning;// #161616;
+    margin-top:30px;
+    position:relative;
+    font-size:1.2em;
+    font-weight:bold;
+
+    #analyser {
+        width:100%;
+        height:100%;
+        position:absolute;
+        top:0;
+        left:0;
+        opacity:.7;
+    }
+
+    .interim {
+        color: #eee;
+    }
+
+    .final {
+        color: white;
+        padding-right: 3px;
+        // text-transform: capitalize;
+    }
+}
+
+/* at least 200px by 200px. If the player displays controls, must be large
+    enough to fully display the controls without shrinking the viewport below
+    the minimum size. We recommend 16:9 players be at least 480 pixels wide
+    and 270 pixels tall.
+    */
+
+#video_player {
+    margin-top:25px;
+    //float:left;
+
+    #yt_player_skin {
+        // border:solid blue 1px;
+        // https://www.smashingmagazine.com/2014/02/making-embedded-content-work-in-responsive-design/
+        position: relative;
+        padding-bottom: 56.25%;
+        padding-top: 35px;
+        overflow: hidden;
+        width:79%;
+        float:left;
+
+        iframe {
+            position: absolute;
+            top:0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            //float:left;
+        }
+    }
+
+    #yt_playlist {
+        min-height:10px;
+        width: 19%;
+        float:right;
+        padding-right:1px;
+
+        li {
+            margin-bottom:7px;
+            img {
+                width:100%;
+            }
+            &.active {
+                // shore up differences in player and playlist heigh
+                //margin-top:1px;
+                //margin-bottom:7px;
+                img {
+                    border-color:$brand-warning;
+                    border-width: 3px;
+                    padding:2px;
+                }
+            }
+        }
+    }
+}
+
+.row-faq .info-listing li {
+    margin-bottom:10px;
+    color:$brand-warning;
+    font-size:1.3em;
+}
+
+.row-faq .info-listing ul {
+    margin: 5px 0 25px 15px;
+        li {
+        font-size:.6em;
+        font-weight:normal;
+        margin-bottom:5px;
+    }
+}
+
+.row-matches h5 {
+    position:relative;
+    margin-top:21px;
+    margin-bottom:25px;
+
+    em {
+        color: $brand-warning;
+        margin-left:5px;
+        margin-right:5px;
+    }
+}
+
+#lyricMatchList{
+
+    li.match-result {
+        // border:solid red 1px;
+        background-color: $brand-warning;
+        margin-bottom:4px;
+        font-size:.7em;
+        position:relative;
+        z-index: 0;
+        padding-left: 30px;
+        min-height:22px;
+        // letter-spacing: -1px;
+
+        &:hover {
+            cursor:pointer;
+        }
+
+        .badge.track-rating {
+            position:absolute;
+            top:3px;
+            left:4px;
+            opacity:.6;
+            z-index:10;
+            padding:3px;
+            font-size:.9em;
+            line-height:1em;
+        }
+
+        .li-wrapper{
+            // border:solid red 1px;
+            width:100%;
+            height:100%;
+            position:relative;
+            z-index:20;
+            line-height:22px;
+
+            //padding:5px 5px 5px 2.5em;
+            color:#444;
+
+            .artist-name{
+                font-weight:bold;
+                font-size:1.2em;
+                color:#222;
+            }
+
+            .track-name {
+                background-color: rgba(80,80,80,.5);
+                border-radius: 2px;
+                // font-weight:bold;
+                padding:3px 5px;
+                margin-left:4px;
+                margin-right:4px;
+                color:#f6f6f6;
+            }
+
+            .album-name {
+                font-style: italic;
+            }
+
+            .first-release-date {
+                &:before {
+                    content: ' - ';
+                }
+                margin-left:2px;
+                font-style: italic;
+            }
+        }
+    }
+}
