@@ -6116,7 +6116,7 @@ a.setting-label {
     padding-left: 0;
     padding-right: 0; }
   .command-ctr div.btn-group:nth-child(2) {
-    padding: 0 10px; }
+    padding: 0 0 0 10px; }
 
 .redo-search {
   width: 35%;
