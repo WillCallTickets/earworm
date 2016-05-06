@@ -32,7 +32,7 @@
 }
 
  ul.info-listing, ul.info-listing a, .setting-label {
-    font-size:1.2em;
+    font-size:1em;
     font-weight:bold;
     color:$brand-warning;
  }
@@ -53,8 +53,8 @@
 }
 .container {
     //border:solid #999 1px;
-    min-width:480px;
-    max-width:480px;
+    min-width:375px;
+    max-width:375px;
     padding:15px;
 }
 
@@ -81,7 +81,7 @@
     button {
         color: #444;
         font-weight:bold;
-        font-size: 1.3em;
+        font-size: 1.1em;
         text-align: center;
         padding-left:0;
         padding-right:0;
@@ -93,6 +93,7 @@
 }
 
 .redo-search{
+    width:100%;
     color: #444;
     font-weight:bold;
     font-size: 1.3em;
@@ -173,9 +174,10 @@
         width: 19%;
         float:right;
         padding-right:1px;
+        // margin-top:3px;
 
         li {
-            margin-bottom:7px;
+            margin-bottom:8px;
             img {
                 width:100%;
             }
@@ -244,7 +246,7 @@
             opacity:.6;
             z-index:10;
             padding:3px;
-            font-size:.9em;
+            font-size:.8em;
             line-height:1em;
         }
 
@@ -254,7 +256,7 @@
             height:100%;
             position:relative;
             z-index:20;
-            line-height:22px;
+            line-height:20px;
 
             //padding:5px 5px 5px 2.5em;
             color:#444;

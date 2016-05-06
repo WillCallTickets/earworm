@@ -78,7 +78,7 @@ $headings-color:          inherit !default;
 
 //** Load fonts from this directory.
 // $icon-font-path: if($bootstrap-sass-asset-helper, "bootstrap/", "../fonts/bootstrap/") !default;
-$icon-font-path:'../node_modules/bootstrap-sass/assets/fonts/bootstrap/';
+$icon-font-path:'../bootstrap/';
 
 //** File name for all font files.
 $icon-font-name:          "glyphicons-halflings-regular" !default;

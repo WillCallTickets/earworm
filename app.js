@@ -79,6 +79,7 @@ $(function() {
     }
 
     $('.redo-search').on('click', function() {
+        $('.inputs').html('');
         currentStep = 'home';
         displayCurrentStep();
     });
