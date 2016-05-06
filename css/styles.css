@@ -6124,9 +6124,11 @@ a.setting-label {
   font-weight: bold;
   font-size: .9em;
   margin-top: 21px;
-  margin-bottom: 50px;
   text-align: center;
   padding: 5px 0 5px 0; }
+
+.row-bottom {
+  height: 60px; }
 
 .search-history {
   margin-top: 30px;
@@ -6174,7 +6176,7 @@ a.setting-label {
     padding-right: 3px; }
 
 #video_player {
-  margin-top: 27px; }
+  margin-top: 40px; }
   #video_player #yt_player_skin {
     position: relative;
     padding-bottom: 56.25%;

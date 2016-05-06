@@ -202,7 +202,7 @@ $(function() {
     //  Event handlers
     /////////////////////////////////////////////////////////////
 
-    $('.search-history ul').on('click', 'li', function(e){
+    $('.search-history').on('click', 'li', function(e){
         console.log('history click', $(e.target).text());
         var txt = $(e.target).text();
         // clear spans

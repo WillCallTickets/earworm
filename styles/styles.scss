@@ -102,9 +102,12 @@
     font-weight:bold;
     font-size: .9em;
     margin-top:21px;
-    margin-bottom:50px; // bump off the bottom for longer results
     text-align: center;
     padding:5px 0 5px 0;
+}
+
+.row-bottom {
+    height:60px; // bump off the bottom for longer results
 }
 
 .search-history {
@@ -170,7 +173,7 @@
 }
 
 #video_player {
-    margin-top:27px;
+    margin-top:40px;
 
     #yt_player_skin {
         // https://www.smashingmagazine.com/2014/02/making-embedded-content-work-in-responsive-design/
