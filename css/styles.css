@@ -6123,17 +6123,13 @@ a.setting-label {
   width: 25%;
   color: #444;
   font-weight: bold;
-  font-size: .8em;
+  font-size: .75em;
   margin-top: 21px;
   text-align: center;
-  padding-left: 0;
-  padding-right: 0; }
+  padding: 5px 0 5px 0; }
 
 .row-player .redo-search {
   margin-left: 5px; }
-
-#fakeSearch {
-  display: none; }
 
 #video_player {
   display: none; }
@@ -6190,6 +6186,8 @@ a.setting-label {
       margin-bottom: 9px; }
       #video_player #yt_playlist li img {
         width: 100%; }
+        #video_player #yt_playlist li img:hover {
+          box-shadow: 0 0 5px rgba(255, 255, 255, 0.7); }
       #video_player #yt_playlist li.active img {
         border-color: #f0ad4e;
         border-width: 3px;
@@ -6230,12 +6228,12 @@ a.setting-label {
     box-shadow: 0 0 5px rgba(255, 255, 255, 0.7); }
   #lyricMatchList li.match-result .badge.track-rating {
     position: absolute;
-    top: 3px;
-    left: 4px;
+    top: 5px;
+    left: 5px;
     opacity: .6;
     z-index: 10;
     padding: 3px;
-    font-size: .8em;
+    font-size: .9em;
     line-height: 1em; }
   #lyricMatchList li.match-result .li-wrapper {
     width: 100%;
@@ -6251,7 +6249,9 @@ a.setting-label {
     #lyricMatchList li.match-result .li-wrapper .track-name {
       background-color: rgba(80, 80, 80, 0.5);
       border-radius: 2px;
+      display: inline-block;
       padding: 3px 5px;
+      margin-top: 2px;
       margin-left: 4px;
       margin-right: 4px;
       color: #f6f6f6; }

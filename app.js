@@ -108,8 +108,8 @@ $(function() {
         // TODO fix timing issue when we click on match directly after start recording
 
         var $self = $(this);
-        // var input = $('#fakeSearch').val().trim();
-        var input = $('#final_span').text().trim();
+        var input = $('#fakeSearch').val().trim();
+        // var input = $('#final_span').text().trim();
 
         //console.log('evaluate clicked', input);
 
