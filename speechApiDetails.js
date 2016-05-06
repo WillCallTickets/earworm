@@ -101,9 +101,10 @@ if (!('webkitSpeechRecognition' in window)) {
     function toggleStop(){
         if (recognizing) {
             recognition.stop();
-            reset();
-            document.getElementById('record_button').innerHTML = 'Record Lyrics';
         }
+        console.log('toggle recog ', recognizing);
+        reset();
+        document.getElementById('record_button').innerHTML = 'Record Lyrics';
     }
 
     function toggleStartStop() {

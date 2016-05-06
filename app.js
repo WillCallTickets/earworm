@@ -319,13 +319,24 @@ $(function() {
     $('.play-last-setting').on('change', togglePlaySetting);
 
     // clear out any previous input
-    $('.reset-input').on('click', function(){
+    $('#reset_input').on('click', function(e){
+        // console.log('reset click', e);
         var searchText = $('#final_span').text().trim();
         var len = searchText.length;
         $('.inputs').html('');
 
         if(len > 0)
             displayMessageGrowl('Your search has been cleared');
+
+        toggleStop();
+
+
+        $('.inputs').html('');
+        // console.log(' in click handler recognizing', recognizing);
+        // put in a delay - something with the audio recorder api
+        // setTimeout(1000, function(){
+        //
+        // });
     });
 
 });
