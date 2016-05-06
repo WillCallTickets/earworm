@@ -51,7 +51,7 @@
 .container.container-nav {
     padding:30px 15px 0px 15px;
     .btn {
-        font-size:.8em;
+        font-size:1em;
         font-weight:normal;
     }
 }
@@ -64,7 +64,7 @@
 .row {
     display:none;
     h1 {
-        margin-bottom:1em;
+        margin-bottom:25px;
         color:$brand-warning;
     }
 }
@@ -79,8 +79,8 @@
 }
 
 .command-ctr {
-    margin-top:25px;
-    margin-bottom: 10px;
+    margin-top:30px;
+    margin-bottom: 0;
 
     button {
         color: #444;
@@ -96,15 +96,6 @@
     }
 }
 
-.aux-cmd {
-    font-size:.8em;
-
-    button {
-        padding-right:5px;
-        padding-left:5px;
-    }
-}
-
 .redo-search{
     width:35%;
     color: #444;
@@ -114,6 +105,30 @@
     //margin-left:5px;
     text-align: center;
     padding:5px 0 5px 0;
+}
+
+.search-history {
+    margin-top:30px;
+    color: $brand-warning;
+
+    h4 {
+        font-size:1.6em;
+        small {
+            font-size:.5em;
+            color: $brand-warning;
+        }
+    }
+
+    li {
+        margin-left:5px;
+        font-style:italic;
+        font-size:.9em;
+        &:hover{
+            cursor:pointer;
+            // text-decoration: underline;
+            text-shadow: 0 0 3px rgba(240,173,78,.8);
+        }
+    }
 }
 
 #fakeSearch {
@@ -217,8 +232,8 @@
 
 .row-matches h5 {
     position:relative;
-    margin-top:21px;
-    margin-bottom:15px;
+    margin-top:26px;
+    margin-bottom:25px;
     font-size:.8em;
 
     em {

@@ -6085,7 +6085,7 @@ a.setting-label {
 .container.container-nav {
   padding: 30px 15px 0px 15px; }
   .container.container-nav .btn {
-    font-size: .8em;
+    font-size: 1em;
     font-weight: normal; }
 
 .container {
@@ -6095,7 +6095,7 @@ a.setting-label {
 .row {
   display: none; }
   .row h1 {
-    margin-bottom: 1em;
+    margin-bottom: 25px;
     color: #f0ad4e; }
 
 .toggle-group .btn {
@@ -6106,8 +6106,8 @@ a.setting-label {
   font-weight: bold; }
 
 .command-ctr {
-  margin-top: 25px;
-  margin-bottom: 10px; }
+  margin-top: 30px;
+  margin-bottom: 0; }
   .command-ctr button {
     color: #444;
     font-weight: bold;
@@ -6118,12 +6118,6 @@ a.setting-label {
   .command-ctr div.btn-group:nth-child(2) {
     padding: 0 10px; }
 
-.aux-cmd {
-  font-size: .8em; }
-  .aux-cmd button {
-    padding-right: 5px;
-    padding-left: 5px; }
-
 .redo-search {
   width: 35%;
   color: #444;
@@ -6132,6 +6126,22 @@ a.setting-label {
   margin-top: 21px;
   text-align: center;
   padding: 5px 0 5px 0; }
+
+.search-history {
+  margin-top: 30px;
+  color: #f0ad4e; }
+  .search-history h4 {
+    font-size: 1.6em; }
+    .search-history h4 small {
+      font-size: .5em;
+      color: #f0ad4e; }
+  .search-history li {
+    margin-left: 5px;
+    font-style: italic;
+    font-size: .9em; }
+    .search-history li:hover {
+      cursor: pointer;
+      text-shadow: 0 0 3px rgba(240, 173, 78, 0.8); }
 
 #fakeSearch {
   display: none; }
@@ -6207,8 +6217,8 @@ a.setting-label {
 
 .row-matches h5 {
   position: relative;
-  margin-top: 21px;
-  margin-bottom: 15px;
+  margin-top: 26px;
+  margin-bottom: 25px;
   font-size: .8em; }
   .row-matches h5 em {
     color: #f0ad4e;

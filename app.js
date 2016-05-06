@@ -10,6 +10,7 @@
 
 var gMinSearchTokens = 3;
 var gLyricsPageSize = 30;
+var gMaxHistory = 20;
 
 var userSettings = {
 
@@ -44,6 +45,16 @@ var userSettings = {
     lastVideoMatches_set: function(videoArray){
         _storageWrapper.set('lastVideoMatches', videoArray);
     },
+    lyricSearchHistory_get: function(){
+        var list = _storageWrapper.get('lyricSearchHistory');
+        if(!list)
+            return [];
+        else
+            return JSON.parse(list);
+    },
+    lyricSearchHistory_set: function(historyArray){
+        _storageWrapper.set('lyricSearchHistory', JSON.stringify(historyArray));
+    },
 }
 
 // home, settings, faq, contact
@@ -53,6 +64,7 @@ var currentStep = 'home';//settings,faq,contact
 $(function() {
 
     var $listContainer = $('ul#lyricMatchList');
+    var tmpMatches = [];
 
     init();
 
@@ -82,13 +94,15 @@ $(function() {
         var $currentRow = $('.row-' + currentStep);
         var $sibs = $currentRow.siblings('.row');
 
-        // console.log('player', ytPlayer);
         if(ytPlayer)
             ytPlayer.stopVideo();
 
-        $sibs.hide('500', function() {
-            $currentRow.show('900');
-        });
+        $sibs.hide('600');
+
+        $currentRow.show('900');
+        if(currentStep === "home"){
+            displaySearchHistory();
+        }
     }
 
     function searchForVideoBySelection($li){
@@ -100,8 +114,45 @@ $(function() {
 
         ytPlayer.searchVideoIds(artistName + ' ' + trackName);
 
+        // don't record until we navigate away from matches
+        if(tmpMatches.length > 0){
+            userSettings.lastLyricMatches_set(tmpMatches);
+            tmpMatches = [];
+        }
         currentStep = 'player';
         displayCurrentStep();
+    }
+
+    function displaySearchHistory(){
+        var list = userSettings.lyricSearchHistory_get();
+        var $container = $('.search-history').html('');
+
+        if(list.length > 0){
+            $container.append('<h4>Your search history <small>(click to reload)</small></h4>');
+            var $ul= $('<ul class="list-unstyled"></ul>');
+            for(var i=0;i<list.length;i++){
+                var $li = $('<li>' + list[i] + '</li>');
+                $ul.append($li);
+            }
+            $container.append($ul);
+        }
+    }
+
+    function processLyricSearchHistory(lastSearch){
+
+        var list = userSettings.lyricSearchHistory_get();
+
+        // TODO do we want to handle dupes?
+        // if(list.indexOf(lastSearch) == -1){
+        //
+        // }
+
+        list.unshift(lastSearch);
+        if(list.length > gMaxHistory){
+            list = list.slice(0, gMaxHistory);
+        }
+
+        userSettings.lyricSearchHistory_set(list);
     }
 
     // let's say a minimum requirement is that the track needs a spotify track id
@@ -111,8 +162,6 @@ $(function() {
             return  (item.track.track_spotify_id.length > 0);
         });
 
-        userSettings.lastLyricMatches_set(listResults);
-
         var lastSearch = userSettings.lastLyricSearch_get();
         $('.row-matches h5').html('Your lyric search on <em>' + lastSearch +
             '</em> returned ' + listResults.length + ' results');
@@ -120,11 +169,12 @@ $(function() {
         if(listResults.length > 0){
             for(var i=0;i<listResults.length;i++){
                 var track = listResults[i].track;
-
                 $listContainer.append(formatLI(track));
             }
         }
 
+        processLyricSearchHistory(lastSearch);
+        tmpMatches = listResults;
         $('.inputs').html('');
         currentStep = 'matches';
         displayCurrentStep();
@@ -151,15 +201,16 @@ $(function() {
     /////////////////////////////////////////////////////////////
     //  Event handlers
     /////////////////////////////////////////////////////////////
-    $('.load-last-search').on('click', function(e){
-        console.log('last search', e);
-        var last = userSettings.lastLyricSearch_get() || '';
-        if(last.trim().length === 0){
-            displayMessageGrowl('You do not have any saved searches.', 'warning');
-        }
 
+    $('.search-history ul').on('click', 'li', function(e){
+        console.log('history click', $(e.target).text());
+        var txt = $(e.target).text();
+        // clear spans
         $('.inputs').html('');
-        $('#final_span').html(last.trim());
+        // load search container
+        $('#final_span').html(txt);
+        // simulate click on search button
+        $('#evaluateLyrics').click();
     });
 
     $('.redo-search').on('click', function() {
