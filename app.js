@@ -32,6 +32,18 @@ var userSettings = {
     lastLyricSearch_set: function(lyrics){
         _storageWrapper.set('lastLyricSearch', lyrics);
     },
+    lastLyricMatches_get: function(){
+        return _storageWrapper.get('lastLyricMatches') || {};
+    },
+    lastLyricMatches_set: function(matchArray){
+        _storageWrapper.set('lastLyricMatches', matchArray);
+    },
+    lastVideoMatches_get: function(){
+        return _storageWrapper.get('lastVideoMatches') || {};
+    },
+    lastVideoMatches_set: function(videoArray){
+        _storageWrapper.set('lastVideoMatches', videoArray);
+    },
 }
 
 // home, settings, faq, contact
@@ -44,6 +56,9 @@ $(function() {
 
     init();
 
+    /////////////////////////////////////////////////////////////
+    //  Methods
+    /////////////////////////////////////////////////////////////
     function init() {
         populateSettings();
         displayCurrentStep();
@@ -57,8 +72,6 @@ $(function() {
         populateSettings();
         $('.play-last-setting').on('change', togglePlaySetting);
     }
-
-    $('.play-last-setting').on('change', togglePlaySetting);
 
     function populateSettings(){
         //console.log('populate', userSettings.playLast30_get());
@@ -78,6 +91,65 @@ $(function() {
         });
     }
 
+    function searchForVideoBySelection($li){
+        var artistName = $li.find('.artist-name').text();
+        var trackName = $li.find('.track-name').text();
+        //var albumName = $li.find('.album-name').text();
+        //var releaseDate = $li.find('.first-release-date').text();
+        //var spotifyTrackId = $li.attr('data-track-spotify-id');
+
+        ytPlayer.searchVideoIds(artistName + ' ' + trackName);
+
+        currentStep = 'player';
+        displayCurrentStep();
+    }
+
+    // let's say a minimum requirement is that the track needs a spotify track id
+    function processLyricApiCall(data) {
+        //console.log('data', data);
+        var listResults = data.message.body.track_list.filter(function(item){
+            return  (item.track.track_spotify_id.length > 0);
+        });
+
+        userSettings.lastLyricMatches_set(listResults);
+
+        var lastSearch = userSettings.lastLyricSearch_get();
+        $('.row-matches h5').html('Your lyric search on <em>' + lastSearch +
+            '</em> returned ' + listResults.length + ' results');
+
+        if(listResults.length > 0){
+            for(var i=0;i<listResults.length;i++){
+                var track = listResults[i].track;
+
+                $listContainer.append(formatLI(track));
+            }
+        }
+
+        currentStep = 'matches';
+        displayCurrentStep();
+    }
+
+    function formatLI(track){
+        var li = '<li class="match-result" data-track-spotify-id="' + track.track_spotify_id + '">';
+        li += '<span class="badge track-rating">' + track.track_rating + '</span> ';
+        li += '<span class="li-wrapper">';
+        li += '<span class="artist-name">' + track.artist_name + '</span> ';
+
+        li += '<span class="track-name">' + track.track_name + '</span> ';
+
+        li += '<span class="album-name">' + track.album_name + '</span> ';
+        li += '<span class="first-release-date">' + new Date(track.first_release_date).getFullYear() + '</span> ';
+        li += '</span>';//end wrapper
+        li += '</li>';  // end li
+
+        return li;
+    }
+
+
+
+    /////////////////////////////////////////////////////////////
+    //  Event handlers
+    /////////////////////////////////////////////////////////////
     $('.redo-search').on('click', function() {
         $('.inputs').html('');
         currentStep = 'home';
@@ -108,8 +180,8 @@ $(function() {
         // TODO fix timing issue when we click on match directly after start recording
 
         var $self = $(this);
-        var input = $('#fakeSearch').val().trim();
-        // var input = $('#final_span').text().trim();
+        // var input = $('#fakeSearch').val().trim();
+        var input = $('#final_span').text().trim();
 
         //console.log('evaluate clicked', input);
 
@@ -181,6 +253,8 @@ $(function() {
         }
     });
 
+    $('.play-last-setting').on('change', togglePlaySetting);
+
     // clear out any previous input
     $('.reset-input').on('click', function(){
         var searchText = $('#final_span').text().trim();
@@ -191,55 +265,4 @@ $(function() {
             displayMessageGrowl('Your search has been cleared');
     });
 
-    function searchForVideoBySelection($li){
-        var artistName = $li.find('.artist-name').text();
-        var trackName = $li.find('.track-name').text();
-        //var albumName = $li.find('.album-name').text();
-        //var releaseDate = $li.find('.first-release-date').text();
-        //var spotifyTrackId = $li.attr('data-track-spotify-id');
-
-        ytPlayer.searchVideoIds(artistName + ' ' + trackName);
-
-        currentStep = 'player';
-        displayCurrentStep();
-    }
-
-    // let's say a minimum requirement is that the track needs a spotify track id
-    function processLyricApiCall(data) {
-        //console.log('data', data);
-        var listResults = data.message.body.track_list.filter(function(item){
-            return  (item.track.track_spotify_id.length > 0);
-        });
-
-        var lastSearch = userSettings.lastLyricSearch_get();
-        $('.row-matches h5').html('Your lyric search on <em>' + lastSearch +
-            '</em> returned ' + listResults.length + ' results');
-
-        if(listResults.length > 0){
-            for(var i=0;i<listResults.length;i++){
-                var track = listResults[i].track;
-
-                $listContainer.append(formatLI(track));
-            }
-        }
-
-        currentStep = 'matches';
-        displayCurrentStep();
-    }
-
-    function formatLI(track){
-        var li = '<li class="match-result" data-track-spotify-id="' + track.track_spotify_id + '">';
-        li += '<span class="badge track-rating">' + track.track_rating + '</span> ';
-        li += '<span class="li-wrapper">';
-        li += '<span class="artist-name">' + track.artist_name + '</span> ';
-
-        li += '<span class="track-name">' + track.track_name + '</span> ';
-
-        li += '<span class="album-name">' + track.album_name + '</span> ';
-        li += '<span class="first-release-date">' + new Date(track.first_release_date).getFullYear() + '</span> ';
-        li += '</span>';//end wrapper
-        li += '</li>';  // end li
-
-        return li;
-    }
 });

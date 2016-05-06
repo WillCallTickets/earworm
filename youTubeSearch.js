@@ -14,6 +14,7 @@ var OAUTH2_CLIENT_ID = '613492891042-p09aunkiilemd3ak3j773fskutv1prif.apps.googl
 var OAUTH2_SCOPES = ['https://www.googleapis.com/auth/youtube'];
 var API_BROWSER_KEY = 'AIzaSyCIVeAqw5Sqiz5dt9GrfLacBt-p3xLlPTA'
 
+
 //////////////////////////////////////////////////
 // Video Item Object
 //////////////////////////////////////////////////
@@ -34,6 +35,7 @@ ytVideo.prototype.endMinus30Seconds = function() {
     return prior30;
 }
 
+
 //////////////////////////////////////////////////
 // The Player Object
 //////////////////////////////////////////////////
@@ -51,8 +53,10 @@ var YtPlayer = function(_$container, _width, _height) {
     this._done = false;
     this._isReady = false;
 
+
     //////////////////////////////////////////////////
     // Search methods
+    //////////////////////////////////////////////////
     this.searchVideoIds = function(searchTerms){
         var self = this;
         //console.log('searchVideoIds', this.player);
@@ -147,6 +151,8 @@ var YtPlayer = function(_$container, _width, _height) {
             return new ytVideo(idx, name, duration, thumbnail);
         });
 
+        userSettings.lastVideoMatches_set(videos);
+
         // console.log('the videos:', videos.length);
         return videos;
     }
@@ -164,6 +170,7 @@ var YtPlayer = function(_$container, _width, _height) {
 
           return(idList);
     }
+
 
     //////////////////////////////////////////////////
     // Player methods

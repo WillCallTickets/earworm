@@ -6107,7 +6107,6 @@ a.setting-label {
 
 .command-ctr {
   margin-top: 25px;
-  /*match header margin-top*/
   margin-bottom: 10px; }
   .command-ctr button {
     color: #444;
@@ -6129,7 +6128,12 @@ a.setting-label {
   padding: 5px 0 5px 0; }
 
 .row-player .redo-search {
-  margin-left: 5px; }
+  margin-left: 5px;
+  width: 35%;
+  font-size: .9em; }
+
+#fakeSearch {
+  display: none; }
 
 #video_player {
   display: none; }
@@ -6157,13 +6161,8 @@ a.setting-label {
     color: white;
     padding-right: 3px; }
 
-/* at least 200px by 200px. If the player displays controls, must be large
-    enough to fully display the controls without shrinking the viewport below
-    the minimum size. We recommend 16:9 players be at least 480 pixels wide
-    and 270 pixels tall.
-    */
 #video_player {
-  margin-top: 25px; }
+  margin-top: 27px; }
   #video_player #yt_player_skin {
     position: relative;
     padding-bottom: 56.25%;
@@ -6187,7 +6186,7 @@ a.setting-label {
       #video_player #yt_playlist li img {
         width: 100%; }
         #video_player #yt_playlist li img:hover {
-          box-shadow: 0 0 5px rgba(255, 255, 255, 0.7); }
+          box-shadow: 0 0 8px rgba(255, 255, 255, 0.8); }
       #video_player #yt_playlist li.active img {
         border-color: #f0ad4e;
         border-width: 3px;
@@ -6225,7 +6224,7 @@ a.setting-label {
   min-height: 22px; }
   #lyricMatchList li.match-result:hover {
     cursor: pointer;
-    box-shadow: 0 0 5px rgba(255, 255, 255, 0.7); }
+    box-shadow: 0 0 8px rgba(255, 255, 255, 0.8); }
   #lyricMatchList li.match-result .badge.track-rating {
     position: absolute;
     top: 5px;
@@ -6247,13 +6246,11 @@ a.setting-label {
       font-size: 1.2em;
       color: #222; }
     #lyricMatchList li.match-result .li-wrapper .track-name {
-      background-color: rgba(80, 80, 80, 0.5);
+      background-color: rgba(80, 80, 80, 0.4);
       border-radius: 2px;
       display: inline-block;
-      padding: 3px 5px;
-      margin-top: 2px;
-      margin-left: 4px;
-      margin-right: 4px;
+      padding: 1px 4px;
+      margin: 2px 4px 2px 4px;
       color: #f6f6f6; }
     #lyricMatchList li.match-result .li-wrapper .album-name {
       font-style: italic; }
