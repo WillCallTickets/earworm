@@ -53,8 +53,8 @@
 }
 .container {
     //border:solid #999 1px;
-    min-width:375px;
-    max-width:375px;
+    min-width:360px;
+    max-width:360px;
     padding:15px;
 }
 
@@ -81,7 +81,7 @@
     button {
         color: #444;
         font-weight:bold;
-        font-size: 1.1em;
+        font-size: 1em;
         text-align: center;
         padding-left:0;
         padding-right:0;
@@ -93,11 +93,22 @@
 }
 
 .redo-search{
-    width:100%;
+    width:25%;
     color: #444;
     font-weight:bold;
-    font-size: 1.3em;
+    font-size: .8em;
     margin-top:21px;
+    text-align: center;
+    padding-left:0;
+    padding-right:0;
+
+    span.glyphicon {
+        //margin-right:10px;
+    }
+}
+
+.row-player .redo-search {
+    margin-left:5px;
 }
 
 #fakeSearch {
@@ -214,6 +225,7 @@
     position:relative;
     margin-top:21px;
     margin-bottom:25px;
+    font-size:.8em;
 
     em {
         color: $brand-warning;
@@ -237,6 +249,7 @@
 
         &:hover {
             cursor:pointer;
+            box-shadow: 0 0 5px rgba(255,255,255, .7);
         }
 
         .badge.track-rating {
@@ -256,7 +269,7 @@
             height:100%;
             position:relative;
             z-index:20;
-            line-height:20px;
+            line-height:1.6em;
 
             //padding:5px 5px 5px 2.5em;
             color:#444;
