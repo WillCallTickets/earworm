@@ -310,3 +310,36 @@
         }
     }
 }
+
+
+@media (min-width:600px) {
+    .container {
+        min-width:480px;
+        max-width:480px;
+    }
+
+    #video_player {
+        #yt_playlist {
+            li {
+                margin-bottom:8px;
+            }
+        }
+    }
+
+}
+
+@media (min-width:800px) {
+    .container {
+        min-width:740px;
+        max-width:740px;
+    }
+
+    #video_player {
+        #yt_playlist {
+            margin-top:1px;
+            li {
+                margin-bottom:7px;
+            }
+        }
+    }
+}
