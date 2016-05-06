@@ -128,7 +128,7 @@ $(function() {
         var $container = $('.search-history').html('');
 
         if(list.length > 0){
-            $container.append('<h4>Your search history <small>(click to reload)</small></h4>');
+            $container.append('<h4>Your search history <small>(click item to reload)</small></h4>');
             var $ul= $('<ul class="list-unstyled"></ul>');
             for(var i=0;i<list.length;i++){
                 var $li = $('<li>' + list[i] + '</li>');
