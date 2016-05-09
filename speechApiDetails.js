@@ -110,6 +110,7 @@ if (!('webkitSpeechRecognition' in window)) {
     function toggleStartStop() {
         if (recognizing) {
             toggleStop();
+            // document.getElementById('analyser').style.display = 'none';
         } else {
             final_transcript = '';
             recognition.lang = 'en-US';
@@ -119,6 +120,8 @@ if (!('webkitSpeechRecognition' in window)) {
             interim_span.innerHTML = '';
             start_timestamp = event.timeStamp;
             document.getElementById('record_button').innerHTML = 'Stop Recording';
+
+            // document.getElementById('analyser').style.display = 'block';
         }
     }
 }
